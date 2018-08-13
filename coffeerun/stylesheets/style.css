@@ -1,0 +1,19 @@
+.sliderValue{
+  display:none;
+}
+
+.lowValue, .midValue, .higValue{
+  display:inline;
+}
+
+.lowValue{
+  color:green;
+}
+
+.midValue{
+  color:yellow;
+}
+
+.higValue{
+  color: red;
+}
