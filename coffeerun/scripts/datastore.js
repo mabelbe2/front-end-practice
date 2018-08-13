@@ -7,22 +7,23 @@
   //constructors
   function DataStore() {
 
-    this.data = {};
+    var data = {};
+    this.add = function(key, val) {
+      data[key] = val;
+    };
+    this.get = function(key) {
+      return data[key];
+    };
+    this.getAll = function() {
+      return data;
+    };
+
+    this.remove = function (key) {
+      delete data[key];
+    };
   }
   //methods
-  DataStore.prototype.add = function(key, val) {
-    this.data[key] = val;
-  };
-  DataStore.prototype.get = function(key) {
-    return this.data[key];
-  };
-  DataStore.prototype.getAll = function() {
-    return this.data;
-  };
 
-  DataStore.prototype.remove = function (key) {
-    delete this.data[key];
-  };
   App.DataStore = DataStore;
   window.App = App;
 })(window);
