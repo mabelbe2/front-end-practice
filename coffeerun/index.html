@@ -63,13 +63,47 @@
               <label data-form-role="value" class="sliderValue">0</label>
               <input data-form-role="slider" name="strength" id="strengthLevel" type="range" value="30">
             </div>
+            <!-- power up -->
+            <div class="hidden-form-group form-group" data-form-role="powerUp">
+              <label for="powerUp">Power up</label>
+              <select id="powerUp" class="form-control" name="power">
+                <option value="">None</option>
+
+                <option value="time travel">time travel</option>
+                <option value="mind reading">mind reading</option>
+                <option value="bug-free code">bug-free code</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-default">Submit</button>
             <button type="reset" class="btn btn-default">Reset</button>
           </form>
         </div>
       </div>
+
+      <!-- modal -->
+      <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Congratulation!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>You have unlocked a achievement! Would you like to use it now?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-confirm="modal">YES</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">NO, THANKS</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="scripts/formhandler.js" charset="utf-8"></script>
     <script src="scripts/datastore.js" charset="utf-8"></script>
     <script src="scripts/truck.js" charset="utf-8"></script>

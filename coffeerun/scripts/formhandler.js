@@ -6,8 +6,10 @@
   var SLIDER_LOW_CLASS = 'lowValue';
   var SLIDER_MID_CLASS = 'midValue';
   var SLIDER_HIG_CLASS = 'higValue';
-
-
+  var MODAL_CONFIRM_SELECTOR='[data-confirm="modal"]';
+  var POWER_FORM_SELECTOR='[data-form-role = "powerUp"]';
+  var achievement=0;
+  var powerUpField=document.querySelector(POWER_FORM_SELECTOR);
 
   function FormHandler(selector) { // Code will go here
     if (!selector) {
@@ -37,10 +39,42 @@
       });
 
       console.log(data);
-      fn(data);
-      this.reset();
-      //elements is the array of the form fields
-      this.elements[0].focus();
+
+
+      //unlock the achievement and show modal
+      if(data['size']==='Coffee-zilla'&& data['flavor']!==''&& data['strength']==="100"&&achievement===0){
+        //if(1){
+        console.log("all matched");
+        $('.modal').modal('show');
+        var confirmButton=document.querySelector(MODAL_CONFIRM_SELECTOR);
+        achievement=1;
+        confirmButton.addEventListener('click',function(event){
+
+          if(data['emailAddress']){
+            powerUpField.classList.remove("hidden-form-group");
+          }
+          $('.modal').modal('hide');
+
+        });
+      }else{
+        //after unlock achievement or no achievement activated
+        if(achievement){
+          powerUpField.classList.add("hidden-form-group");
+
+        }
+        achievement=0;
+        var sliderValue = document.querySelector(SLIDER_VALUE_SELECTOR);
+
+        sliderValue.classList.remove(SLIDER_LOW_CLASS);
+        sliderValue.classList.remove(SLIDER_MID_CLASS);
+        sliderValue.classList.remove(SLIDER_HIG_CLASS);
+        fn(data);
+
+        this.reset();
+        //elements is the array of the form fields
+        this.elements[0].focus();
+      }
+
     });
 
   };

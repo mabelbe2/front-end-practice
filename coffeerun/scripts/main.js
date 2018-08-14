@@ -2,7 +2,7 @@
 (function (window) {
   'use strict';
   var FORM_SELECTOR='[data-coffee-order="form"]';
-  var SLIDER_SELECTOR='[data-form-role="slider"]'
+  var SLIDER_SELECTOR='[data-form-role="slider"]';
   var App = window.App;
   var Truck = App.Truck;
   var DataStore = App.DataStore;
@@ -16,4 +16,6 @@
   formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
   sliderHandler.addSliderHandler();
   console.log(formHandler);
+
+
 })(window);
