@@ -1,0 +1,43 @@
+.sliderValue{
+  display:none;
+}
+
+.lowValue, .midValue, .higValue{
+  display:inline;
+}
+
+.lowValue{
+  color:green;
+}
+
+.midValue{
+  color:yellow;
+}
+
+.higValue{
+  color: red;
+}
+
+.hidden-form-group{
+  display:none;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
