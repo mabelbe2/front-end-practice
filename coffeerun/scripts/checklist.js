@@ -2,6 +2,11 @@
   'use strict';
   var App = window.App || {};
   var $ = window.jQuery;
+  var delay = 200;
+  var timer = 0;
+  var clickCount = 0;
+  var removeTimer=0;
+  var removeDelay = 1000;
 
   function CheckList(selector) {
     if (!selector) {
@@ -15,15 +20,39 @@
     }
   }
 
-  CheckList.prototype.addClickHandler = function(fn) {
+  CheckList.prototype.addClickHandler = function(coffeeOrder, fn) {
+    var self=this;
     // you also passed in a filtering selector as the second argument. The filtering selector tells the event handler to run the callback function only if the event was triggered by an <input> element.
     // This is a pattern called event delegation. It works because some events, like clicks and keypresses, propagate through the DOM, meaning each ancestor element is informed about the event.
     // Any time you need to listen for an event on elements that are dynamically created and removed, such as the checklist items, you should use event delegation. It is easier and more performant to add a single listener to the dynamic elements’ container and then run the handler function based on what element triggered the event.
     this.$element.on('click', 'input', function(event) {
-      var email = event.target.value;
-      this.removeRow(email);
-      fn(email);
-    }.bind(this));
+      clickCount++;
+      if (clickCount === 1) {
+        timer = setTimeout(function() {
+          console.log("single click!");
+          self.$element.css("background-color","grey");
+          removeTimer=setTimeout(function(){
+            var email = event.target.value;
+            self.removeRow(email);
+            fn(email);
+          },removeDelay);
+
+        }, delay);
+      } else if (clickCount >= 2) {
+        clearTimeout(timer);
+        clickCount=0;
+        console.log("double click!");
+        var email = event.target.value;
+        $('#coffeeOrder').val(coffeeOrder.coffee);
+        $('#emailInput').val(email);
+        $('#flavorShot').val(coffeeOrder.flavor);
+        $('input[type=radio][val=' + coffeeOrder.size + ']').attr('checked', "checked");
+        $('#strengthLevel').val(coffeeOrder.strength);
+      }
+
+    });
+
+
   };
 
   CheckList.prototype.addRow = function(coffeeOrder) {
