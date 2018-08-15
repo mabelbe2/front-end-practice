@@ -43,6 +43,18 @@
       'data-coffee-order': 'checkbox',
       'class': 'checkbox'
     });
+    switch (coffeeOrder.flavor) {
+      case "caramel":
+        $div.css('background-color', 'brown');
+        break;
+      case "almond":
+        $div.css('background-color', 'yellow');
+        break;
+      case "mocha":
+        $div.css('background-color', 'green');
+        break;
+
+    }
     var $label = $('<label></label>');
     var $checkbox = $('<input></input>', {
       type: 'checkbox',
@@ -50,7 +62,7 @@
     });
     var description = '[' + coffeeOrder.strength + 'x]';
 
-     description += coffeeOrder.size + ' ';
+    description += coffeeOrder.size + ' ';
     if (coffeeOrder.flavor) {
       description += coffeeOrder.flavor + ' ';
 

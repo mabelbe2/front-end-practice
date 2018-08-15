@@ -41,3 +41,15 @@
   text-align: left;
   vertical-align: middle;
 }
+
+select[value="caramel"]{
+  background-color: brown;
+}
+
+select[value="almond"]{
+  background-color: yellow;
+}
+
+select[value="mocha"]{
+  background-color: green;
+}
